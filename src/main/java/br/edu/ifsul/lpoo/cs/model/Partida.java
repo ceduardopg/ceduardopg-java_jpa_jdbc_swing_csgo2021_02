@@ -2,6 +2,7 @@ package br.edu.ifsul.lpoo.cs.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -30,15 +32,18 @@ public class Partida implements Serializable{
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private Calendar data_inicio;
+    private Calendar inicio;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private Calendar data_fim;
+    private Calendar fim;
         
     @ManyToOne
     @JoinColumn(name = "jogador_id", nullable = false)
     private Jogador jogador;
+    
+    @OneToMany(mappedBy = "partida")
+    private List<Round> rounds;
     
     public Partida(){
         
@@ -52,20 +57,20 @@ public class Partida implements Serializable{
         this.id = id;
     }
 
-    public Calendar getData_inicio() {
-        return data_inicio;
+    public Calendar getInicio() {
+        return inicio;
     }
 
-    public void setData_inicio(Calendar data_inicio) {
-        this.data_inicio = data_inicio;
+    public void setInicio(Calendar inicio) {
+        this.inicio = inicio;
     }
 
-    public Calendar getData_fim() {
-        return data_fim;
+    public Calendar getFim() {
+        return fim;
     }
 
-    public void setData_fim(Calendar data_fim) {
-        this.data_fim = data_fim;
+    public void setFim(Calendar fim) {
+        this.fim = fim;
     }
 
     public Jogador getJogador() {

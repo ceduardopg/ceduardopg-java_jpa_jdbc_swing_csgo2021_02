@@ -1,10 +1,15 @@
 package br.edu.ifsul.lpoo.cs.model;
 
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,6 +29,11 @@ public class Mapa {
     
     @Column(nullable = false, length = 200)
     private String nome;
+    
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "tb_mapa_local", joinColumns = {@JoinColumn(name = "mapa_id")},
+                                       inverseJoinColumns = {@JoinColumn(name = "local_id")})
+    private List<Local> locais;
     
     public Mapa(){
         

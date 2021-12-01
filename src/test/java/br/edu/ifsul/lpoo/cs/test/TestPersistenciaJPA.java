@@ -23,4 +23,18 @@ public class TestPersistenciaJPA {
         
     }
     
+    //@Test
+    public void testPersistenciaEndereco(){
+        
+        PersistenciaJPA persistencia = new PersistenciaJPA();
+        if(persistencia.conexaoAberta()){
+            System.out.println("abriu a conexao com o BD via JPA");
+            
+
+            
+        }else{
+            System.out.println("Noa abriu a conexao com o BD via JPA");
+        }
+        
+    }
 }
