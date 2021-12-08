@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_endereco")
 @NamedQueries({      
-    @NamedQuery(name="Endereco.listorderbyid",
+    @NamedQuery(name="Endereco.list_order_by_id_asc",
                query="SELECT e From Endereco e order by e.id asc")
 })
 public class Endereco implements Serializable{

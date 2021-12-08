@@ -1,5 +1,6 @@
 package br.edu.ifsul.lpoo.cs.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -59,6 +60,13 @@ public class Arma extends Artefato {
 
     public void setMunicoes(List<Municao> municoes) {
         this.municoes = municoes;
+    }
+    
+    public void setMunicao(Municao m) {
+        if(this.municoes == null){
+            this.municoes = new ArrayList<>();
+        }
+        this.municoes.add(m);                
     }
     
 }
